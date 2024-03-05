@@ -6,9 +6,11 @@ const app = Vue.createApp({
             new_items: [ 
                 {new_name: 'Test Item', new_price: 10, new_src: 'imgurlink.com'},
             ],
-            new_name: '',
-            new_price: '',
-            new_img: ''
+            new_item: {
+                new_name: '',
+                new_price: '',
+                new_img: ''
+            }
         };
     },
     methods: {
@@ -22,6 +24,7 @@ const app = Vue.createApp({
             }
             console.log(new_item)
             this.new_items.push(new_item)
+            db_add(new_item)
         }
     }
 });

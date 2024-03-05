@@ -25,10 +25,11 @@ async function getDataOnLoad() {
 
 
 
-async function db_add() { 
+async function db_add(new_item) { 
+    console.log(new_item)
     const response = await fetch('http://localhost:3300/add_shop_data', { 
         method: 'POST',
-        body: new_item,
+        body: JSON.stringify(new_item),
         headers: { 
             'Content-Type': 'application/json'
         }
