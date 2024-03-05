@@ -1,0 +1,34 @@
+body { 
+    margin: 0;
+    border: 0;
+}
+* { 
+    margin: 0;
+    border: 0;
+}
+
+#flex_items { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: auto;
+    max-height: fit-content;
+    width: auto;
+    max-width: fit-content;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+#flex_items div { 
+    width: 27vw;
+    height: 40vh;
+    background-color: red;
+    margin-right: 5vw;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-bottom: 7vh;
+}
+#flex_items img { 
+    width: 20vw;
+    height: 20vh;
+}

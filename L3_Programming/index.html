@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Development</title>
+    <!-- CDNS: -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <!-- Front End Scripts  -->
+    <script defer src="/L3_Programming/L3_core/client/App.js"></script>
+
+    <!-- Back/Middle -->
+    <script defer src="/L3_Programming/L3_server/node_requests/nodeReq.js"></script>
+
+    <!-- Styles:  -->
+    <link rel="stylesheet" href="/L3_Programming/L3_core/css/core.css">
+</head>
+<body>
+    <div id="app">
+    <div id="add_new"> 
+        <form @submit.prevent="add_new(new_name, new_price, new_img)" id="add_new_form"> 
+            <input v-model="new_name" id="new_name" placeholder="Item Name">
+            <input v-model="new_price" id="new_price" placeholder="Item Price">
+            <input v-model="new_img" id="new_img" placeholder="Item Img src">
+            <button>Add New</button>
+        </form>
+    </div>
+
+    <div id="flex_items"> 
+        
+    </div>
+
+
+
+ 
+   
+    </div>
+</body>
+</html>
