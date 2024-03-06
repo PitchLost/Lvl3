@@ -1,8 +1,8 @@
+let db_items = [] 
+let done_loading = false
 document.addEventListener('DOMContentLoaded', loaded => { 
     console.log('Server Functions executing')
     getDataOnLoad()
-})
-
 
 async function getDataOnLoad() { 
     console.log('Getting data from database')
@@ -18,9 +18,10 @@ async function getDataOnLoad() {
     } else { 
         console.log('Hmmm somethings wrong')
     }
-    let db_items = await response.json()
+    db_items = await response.json()
     console.log('Data from database:',db_items)
-}
+    done_loading = true
+}})
 
 
 

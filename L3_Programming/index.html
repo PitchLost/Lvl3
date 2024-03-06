@@ -6,12 +6,13 @@
     <title>Development</title>
     <!-- CDNS: -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- Back/Middle -->
+    <script defer src="/L3_Programming/L3_server/node_requests/nodeReq.js"></script>
 
     <!-- Front End Scripts  -->
     <script defer src="/L3_Programming/L3_core/client/App.js"></script>
 
-    <!-- Back/Middle -->
-    <script defer src="/L3_Programming/L3_server/node_requests/nodeReq.js"></script>
+    
 
     <!-- Styles:  -->
     <link rel="stylesheet" href="/L3_Programming/L3_core/css/core.css">
@@ -28,7 +29,11 @@
     </div>
 
     <div id="flex_items"> 
-        
+        <div v-for="item in shop_items"> 
+            <strong>{{ item.ITEM_NAME }}</strong>
+            <p>{{ item.ITEM_PRICE }}</p>
+            <img :src="item.img_source">
+        </div>
     </div>
 
 

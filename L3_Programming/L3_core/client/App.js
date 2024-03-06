@@ -1,3 +1,5 @@
+setTimeout(_ => {
+
 const app = Vue.createApp({
     data() {
         return {
@@ -10,7 +12,8 @@ const app = Vue.createApp({
                 new_name: '',
                 new_price: '',
                 new_img: ''
-            }
+            }, 
+            shop_items: db_items
         };
     },
     methods: {
@@ -20,7 +23,7 @@ const app = Vue.createApp({
             new_item = { 
                 new_name: name, 
                 new_price: price, 
-                new_src: img_src
+                new_img: img_src
             }
             console.log(new_item)
             this.new_items.push(new_item)
@@ -28,5 +31,13 @@ const app = Vue.createApp({
         }
     }
 });
+console.log('Vue shop items',this.shop_items)
+
+
 
 app.mount('#app');
+
+
+},100)
+
+
