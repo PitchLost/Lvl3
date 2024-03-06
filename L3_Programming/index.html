@@ -47,10 +47,15 @@
     
 
     <div id="flex_items"> 
-        <div v-for="item in shop_items"> 
+        <div class="shop_item" v-for="item in shop_items"> 
             <strong>{{ item.ITEM_NAME }}</strong>
-            <p>{{ item.ITEM_PRICE }}</p>
+            <p>${{item.ITEM_PRICE }}</p>
             <img :src="item.img_source">
+
+            <div class="desc_div"> 
+                <p class="item_desc">{{ item.item_desc }}</p>
+            </div>
+            
         </div>
     </div>
 
