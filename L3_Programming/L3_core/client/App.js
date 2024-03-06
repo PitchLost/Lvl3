@@ -3,7 +3,9 @@ setTimeout(_ => {
 const app = Vue.createApp({
     data() {
         return {
-            test_src: 'https://i.imgur.com/5O8MvG8.png',
+          // Check for admin/developer mode
+          developer_mode: false,
+          admin_mode: false,
             // New Item Add objects: 
             new_items: [ 
                 {new_name: 'Test Item', new_price: 10, new_src: 'imgurlink.com'},

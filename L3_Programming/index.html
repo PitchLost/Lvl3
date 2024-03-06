@@ -15,18 +15,33 @@
     
 
     <!-- Styles:  -->
+    <!-- Main Styles: -->
     <link rel="stylesheet" href="/L3_Programming/L3_core/css/core.css">
+
+    <!-- L3_devtools -->
+    <link rel="stylesheet" href="/L3_Programming/L3_devtools/add_item/css/add_item.css">
+    <!-- Front styles -->
+
+        <!-- items -->
+            <link rel="stylesheet" href="/L3_Programming/L3_front/front_items/css/items.css">
+        <!-- login -->
+            <link rel="stylesheet" href="/L3_Programming/L3_front/front_login/css/login.css">
+        <!-- navigation -->
+            <link rel="stylesheet" href="/L3_Programming/L3_front/front_navigation/css/navigation.css">
 </head>
 <body>
     <div id="app">
-    <div id="add_new"> 
+    <div v-show="developer_mode" id="add_new"> 
         <form @submit.prevent="add_new(new_item.new_name, new_item.new_price, new_item.new_img)" id="add_new_form"> 
-            <input v-model="new_item.new_name" id="new_name" placeholder="Item Name">
-            <input v-model="new_item.new_price" id="new_price" placeholder="Item Price">
-            <input v-model="new_item.new_img" id="new_img" placeholder="Item Img src">
+            <input v-model="new_item.new_name" id="new_name" placeholder="Item Name" autocomplete="off">
+            <input v-model="new_item.new_price" id="new_price" placeholder="Item Price" autocomplete="off">
+            <input v-model="new_item.new_img" id="new_img" placeholder="Item Img src" autocomplete="off">
             <button>Add New</button>
         </form>
     </div>
+
+    <!-- Navigation Component: -->
+    
 
     <div id="flex_items"> 
         <div v-for="item in shop_items"> 
@@ -35,6 +50,9 @@
             <img :src="item.img_source">
         </div>
     </div>
+
+
+
 
 
 
