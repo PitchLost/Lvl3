@@ -30,6 +30,10 @@ const app = Vue.createApp({
             console.log(new_item)
             this.new_items.push(new_item)
             db_add(new_item)
+        }, 
+        toggleDevMode() { 
+            this.developer_mode = !this.developer_mode
+            console.log('Dev Mode:', developer_mode)
         }
     }
 });
