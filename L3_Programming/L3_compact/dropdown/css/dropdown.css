@@ -6,5 +6,7 @@
     min-height: 5em;
     max-height: fit-content;
     background-color: white;
-    
+}
+#dropdown_menu p:hover { 
+    color: red;
 }
