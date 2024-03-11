@@ -8,9 +8,6 @@ let session_length = 0
 document.addEventListener('DOMContentLoaded', _ => { 
 console.log('core.js executing')
 
-//Increment the session duration timer:
-setInterval(_ => { 
-    session_length++
-},1000)
-
+const time_of_load = new Date() 
+console.log('Session start time =',time_of_load)
 })
