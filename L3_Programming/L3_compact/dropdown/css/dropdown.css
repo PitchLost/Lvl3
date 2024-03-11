@@ -1,0 +1,10 @@
+#dropdown_menu { 
+    display: flex;
+    justify-content: center;
+    width: 15em;
+    height: fit-content;
+    min-height: 5em;
+    max-height: fit-content;
+    background-color: white;
+    
+}

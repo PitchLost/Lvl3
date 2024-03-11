@@ -46,6 +46,15 @@ const app = Vue.createApp({
             console.log('Dev Mode:', developer_mode) // Log
         }, 
 
+
+        //Compact Mode Functions: 
+        toggleCompact() { 
+            this.compactOpen = !this.compactOpen
+        },
+        toggleDropdown() { 
+            this.dropdownOpen = !this.dropdownOpen
+        },
+
         // Make the dropdown menu
         //! This will not be used yet!!
         createDropdown() {  
