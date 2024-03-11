@@ -6,12 +6,16 @@
     <title>Development</title>
     <!-- CDNS: -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://kit.fontawesome.com/e68c61fca7.js" crossorigin="anonymous"></script>
     <!-- Back/Middle -->
     <script defer src="/L3_Programming/L3_server/node_requests/nodeReq.js"></script>
 
     <!-- Front End Scripts  -->
     <script defer src="/L3_Programming/L3_core/client/App.js"></script>
-
+    <script defer src="/L3_Programming/L3_core/client/core.js"></script>
+    <!-- Navigation:  -->
+    <script defer src="/L3_Programming/L3_front/front_navigation/client/navigation.js"></script>
+ 
     
 
     <!-- Styles:  -->
@@ -20,6 +24,10 @@
 
     <!-- L3_devtools -->
     <link rel="stylesheet" href="/L3_Programming/L3_devtools/add_item/css/add_item.css">
+    <!-- L3_compact styles -->
+    <link rel="stylesheet" href="/L3_Programming/L3_compact/dropdown/css/dropdown.css">
+    <link rel="stylesheet" href="/L3_Programming/L3_compact/window/css/window.css">
+    
     <!-- Front styles -->
 
         <!-- items -->
@@ -40,23 +48,63 @@
         </form>
     </div>
 
-    <!-- Navigation Component: -->
+    <!-- Navigation -->
+
+    <nav> 
+        <ul id="top_nav"> 
+            <div id="left_seg"> 
+                <li><a href="link.com">Compact order page</a></li>
+                <li><a href="link.com">Home Page</a></li>
+                <li><a href="link.com">Buyers Gurantee</a></li>
+            </div>
+            <div id="center_seg"> 
+                <header>Tech Port</header>
+            </div>
+            <div id="right_seg"> 
+                <li><a href="discord.com"><i class="fa-brands fa-discord"></i></a></li>
+                <li><a href="twitter.com"><i class="fa-brands fa-twitter"></i></a></li>
+                <li><a href="insta.com"><i class="fa-brands fa-instagram"></i></a></li>
+                <li><a href="tiktok.com"><i class="fa-brands fa-tiktok"></i></a></li>
+                <button @click="toggleDevMode">
+                    <span v-if="developer_mode"><i class="fa-solid fa-toggle-off"></i></span>
+                    <span v-if="!developer_mode"><i class="fa-solid fa-toggle-on"></i></span>
+                </button>
+            </div>
+        </ul>
+    </nav>
+
     
 
+
+
+
+     <!-- Search Bar -->
+     <div id="search_bar"> 
+        <input id="search_input" type="text" placeholder="Search"> 
+        
+     </div>
+    
+     <!-- Flex Item display -->
     <div id="flex_items"> 
-        <div v-for="item in shop_items"> 
-            <strong>{{ item.ITEM_NAME }}</strong>
-            <p>{{ item.ITEM_PRICE }}</p>
-            <img :src="item.img_source">
+        <div class="shop_item" v-for="item in shop_items"> 
+            <strong>{{ item.ITEM_NAME }}</strong> <!--Item Title-->
+            <p>${{item.ITEM_PRICE }}</p> <!--Item Price-->
+            <img :src="item.img_source"> <!-- Item image source-->
+            <div class="desc_div"> 
+                <p class="item_desc">{{ item.item_desc }}</p>
+            </div>
+            
+        </div>
+    </div>
+
+    <div id="compact_mode"> 
+        <div id="dropdown_menu"> 
+
         </div>
     </div>
 
 
 
-
-
-
- 
    
     </div>
 </body>
