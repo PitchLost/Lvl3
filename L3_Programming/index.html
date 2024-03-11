@@ -24,6 +24,10 @@
 
     <!-- L3_devtools -->
     <link rel="stylesheet" href="/L3_Programming/L3_devtools/add_item/css/add_item.css">
+    <!-- L3_compact styles -->
+    <link rel="stylesheet" href="/L3_Programming/L3_compact/dropdown/css/dropdown.css">
+    <link rel="stylesheet" href="/L3_Programming/L3_compact/window/css/window.css">
+    
     <!-- Front styles -->
 
         <!-- items -->
@@ -43,25 +47,8 @@
             <button>Add New</button>
         </form>
     </div>
-     <!-- Search Bar -->
-     <div id="search_bar"> 
-        <input id="search_input" type="text" placeholder="Search"> 
-        
-     </div>
-    
 
-    <div id="flex_items"> 
-        <div class="shop_item" v-for="item in shop_items"> 
-            <strong>{{ item.ITEM_NAME }}</strong>
-            <p>${{item.ITEM_PRICE }}</p>
-            <img :src="item.img_source">
-
-            <div class="desc_div"> 
-                <p class="item_desc">{{ item.item_desc }}</p>
-            </div>
-            
-        </div>
-    </div>
+    <!-- Navigation -->
 
     <nav> 
         <ul id="top_nav"> 
@@ -86,12 +73,38 @@
         </ul>
     </nav>
 
+    
 
 
 
 
+     <!-- Search Bar -->
+     <div id="search_bar"> 
+        <input id="search_input" type="text" placeholder="Search"> 
+        
+     </div>
+    
+     <!-- Flex Item display -->
+    <div id="flex_items"> 
+        <div class="shop_item" v-for="item in shop_items"> 
+            <strong>{{ item.ITEM_NAME }}</strong> <!--Item Title-->
+            <p>${{item.ITEM_PRICE }}</p> <!--Item Price-->
+            <img :src="item.img_source"> <!-- Item image source-->
+            <div class="desc_div"> 
+                <p class="item_desc">{{ item.item_desc }}</p>
+            </div>
+            
+        </div>
+    </div>
 
- 
+    <div id="compact_mode"> 
+        <div id="dropdown_menu"> 
+
+        </div>
+    </div>
+
+
+
    
     </div>
 </body>

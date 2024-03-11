@@ -56,11 +56,16 @@ body {
     background-color: transparent;
 }
 #flex_items img { 
-    width: 20vw;
+    display: flex;
+    max-width: 180px;
+    min-width: 180px;
+    width: auto;
+    justify-content: center;
     height: 20vh;
     margin-right: 1em;
     padding-bottom: 15vh;
     padding-top: 0vh;
+    align-items: center;
 }
 .item_desc { 
     display: flex;

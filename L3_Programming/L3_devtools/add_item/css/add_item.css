@@ -1,7 +1,10 @@
 #add_new { 
     position: fixed;
-    top: 10%;
-    left: 20%;
+    top: 1%;
+    left: 33%;
+    height: 7vh;
+    background-color: blue;
+    z-index: 3;
 }
 #add_new input { 
     background-color: red;
@@ -9,4 +12,7 @@
     height: 3em;
     width: 10em;
     margin-right: 1em;
+
+  
+    z-index: 2;
 }
