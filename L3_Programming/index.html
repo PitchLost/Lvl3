@@ -53,7 +53,7 @@
     <nav> 
         <ul id="top_nav"> 
             <div id="left_seg"> 
-                <li><a href="link.com">Compact order page</a></li>
+                <li @click="toggleCompact"><a>Compact order page</a></li>
                 <li><a href="link.com">Home Page</a></li>
                 <li><a href="link.com">Buyers Gurantee</a></li>
             </div>
@@ -96,12 +96,18 @@
             
         </div>
     </div>
-
-    <div id="compact_mode"> 
-        <div id="dropdown_menu"> 
-
-        </div>
+<div v-show="compactOpen" id="compact_mode"> 
+     <button @click="toggleCompact" id="closeCompact">X</button>
+    <div id="compact_window"> 
+            <div @click="toggleDropdown" id="dropdown_menu">
+                <p class="dropdownCTRL" v-show="!dropdownOpen">Item Dropdown<i class="fa-solid fa-angle-down"></i></p>
+                <div v-if="dropdownOpen" id="dropdownItems">
+                <p v-for="dropdownItem in dropdownItems">{{ dropdownItem.ITEM_NAME }} </p>
+                </div>
+                <p class="dropdownCTRL" v-show="dropdownOpen">Close Dropdown<i class="fa-solid fa-angle-up"></i></p>
+        </div> 
     </div>
+</div>
 
 
 

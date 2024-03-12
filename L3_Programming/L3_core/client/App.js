@@ -18,6 +18,8 @@ const app = Vue.createApp({
             shop_items: db_items, // array for the flex display
 
             // Dropdown menu data: 
+            dropdownItems: db_items,
+
             dropdownOpen: false, 
 
             // Compact Mode Data: 
@@ -28,6 +30,11 @@ const app = Vue.createApp({
     },
     methods: { // Methods are the vue.js functions
         // Define your methods here
+
+        vue_onload() { 
+            console.log('vue onload function')
+            this.dropdownItems = this.dropdownItems.sort((a,b) => a.ITEM_NAME.localeCompare(b.ITEM_NAME))
+        },
         add_new(name, price, img_src) { // add new items to database/DOM
             console.log(name, price, img_src) // Log
             new_item = { // Set the values of new_item to the newly obtained data
@@ -46,6 +53,15 @@ const app = Vue.createApp({
             console.log('Dev Mode:', developer_mode) // Log
         }, 
 
+
+        //Compact Mode Functions: 
+        toggleCompact() { 
+            this.compactOpen = !this.compactOpen
+        },
+        toggleDropdown() { 
+            this.dropdownOpen = !this.dropdownOpen
+        },
+
         // Make the dropdown menu
         //! This will not be used yet!!
         createDropdown() {  
@@ -54,9 +70,12 @@ const app = Vue.createApp({
                 console.log('dropdown items:', dropdown_items)
             }
         }
+    }, 
+    mounted() { 
+        this.vue_onload()
     }
 });
-console.log('Vue shop items',this.shop_items)
+
 
 
 
