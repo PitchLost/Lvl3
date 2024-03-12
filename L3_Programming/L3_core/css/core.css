@@ -87,5 +87,13 @@ body {
     border-left-style:solid ;
     border-left-color:black ;
     border-left-width: thin;
-
+}
+.cart_btn { 
+    position: absolute;
+    bottom: 2vh;
+    left: -17vw;
+    width: 16vw;
+    height: 4vh;
+    color: red;
+    background-color: lightgray;
 }
