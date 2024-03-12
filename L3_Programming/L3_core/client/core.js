@@ -10,4 +10,13 @@ console.log('core.js executing')
 
 const time_of_load = new Date() 
 console.log('Session start time =',time_of_load)
+
+
+
+setInterval(_ => { 
+    session_length = new Date(); // Make the session length a new 
+    session_length = session_length - time_of_load
+    console.log('The session has been going for:', session_length)
+}, 5000)
+
 })

@@ -100,10 +100,11 @@
      <button @click="toggleCompact" id="closeCompact">X</button>
     <div id="compact_window"> 
             <div @click="toggleDropdown" id="dropdown_menu">
-                <p v-show="!dropdownOpen">Item Dropdown<i class="fa-solid fa-angle-down"></i></p>
+                <p class="dropdownCTRL" v-show="!dropdownOpen">Item Dropdown<i class="fa-solid fa-angle-down"></i></p>
                 <div v-if="dropdownOpen" id="dropdownItems">
-                <p v-for="dropdownItem in shop_items">{{ dropdownItem.ITEM_NAME }} </p>
+                <p v-for="dropdownItem in dropdownItems">{{ dropdownItem.ITEM_NAME }} </p>
                 </div>
+                <p class="dropdownCTRL" v-show="dropdownOpen">Close Dropdown<i class="fa-solid fa-angle-up"></i></p>
         </div> 
     </div>
 </div>
