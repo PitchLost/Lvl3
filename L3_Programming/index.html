@@ -93,7 +93,7 @@
             
             <div class="desc_div"> 
                 <p class="item_desc">{{ item.item_desc }}</p>
-                <button class="cart_btn">Add To Cart</button>
+                <button @click="cart_add(item.ITEM_NAME, item.ITEM_PRICE)" class="cart_btn">Add To Cart</button>
             </div>
             
         </div>

@@ -88,7 +88,7 @@ body {
     border-left-color:black ;
     border-left-width: thin;
 }
-.cart_btn { 
+.cart_btn { /* these will need changing to better */
     position: absolute;
     bottom: 2vh;
     left: -17vw;
@@ -96,4 +96,7 @@ body {
     height: 4vh;
     color: red;
     background-color: lightgray;
+}
+.cart_btn:hover { 
+    color: blue;
 }
