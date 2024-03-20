@@ -23,7 +23,24 @@ const app = Vue.createApp({
             dropdownOpen: false, 
 
             // Compact Mode Data: 
-            compactOpen: false
+            compactOpen: false, 
+
+
+            // Cart Data: 
+
+            // If the cart is open or not
+            cart_open: false,
+
+            cart_total: 0, // Running total of the cart
+
+            // Array for all cart items: 
+            cart_items: [],
+
+            // Item being added to the cart
+            cart_add_item: { 
+                cart_name: '',
+                cart_price: 0
+            }
         
 
         };
@@ -69,6 +86,33 @@ const app = Vue.createApp({
                 this.dropdown_items.push(this.shop_items[i])
                 console.log('dropdown items:', dropdown_items)
             }
+        }, 
+
+
+        // Cart Functions: 
+        cart_add(name, price) { 
+            this.cart_add_item = { 
+                cart_name: name, 
+                cart_price: price
+            } 
+
+            // Add the item to the cart items array: 
+            this.cart_items.push(this.cart_add_item)
+            console.log('Item added to cart:',this.cart_add_item)
+            console.log('Cart Contents:', this.cart_items)
+
+            // Increment the cart Price: 
+            this.cart_total = this.cart_total + this.cart_add_item.cart_price
+            console.log('The cart running total is:',this.cart_total)
+            
+        }, 
+        toggle_cart_window() { 
+            this.cart_open = !this.cart_open
+            console.log('Toggle cart', this.cart_open)
+        },
+
+        open_checkout() { 
+            console.log('Opening Checkout')
         }
     }, 
     mounted() { 

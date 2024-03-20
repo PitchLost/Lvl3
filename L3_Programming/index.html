@@ -36,6 +36,9 @@
             <link rel="stylesheet" href="/L3_Programming/L3_front/front_login/css/login.css">
         <!-- navigation -->
             <link rel="stylesheet" href="/L3_Programming/L3_front/front_navigation/css/navigation.css">
+
+        <!-- Cart -->
+            <link rel="stylesheet" href="/L3_Programming/L3_cart/css/cart.css">
 </head>
 <body>
     <div id="app">
@@ -56,6 +59,7 @@
                 <li @click="toggleCompact"><a>Compact order page</a></li>
                 <li><a href="link.com">Home Page</a></li>
                 <li><a href="link.com">Buyers Gurantee</a></li>
+                <button @click="toggle_cart_window"><i class="fa-solid fa-cart-shopping"></i></button>
             </div>
             <div id="center_seg"> 
                 <header>Tech Port</header>
@@ -90,14 +94,16 @@
             <strong>{{ item.ITEM_NAME }}</strong> <!--Item Title-->
             <p>${{item.ITEM_PRICE }}</p> <!--Item Price-->
             <img :src="item.img_source"> <!-- Item image source-->
+            
             <div class="desc_div"> 
                 <p class="item_desc">{{ item.item_desc }}</p>
+                <button @click="cart_add(item.ITEM_NAME, item.ITEM_PRICE)" class="cart_btn">Add To Cart</button>
             </div>
             
         </div>
     </div>
 <div v-show="compactOpen" id="compact_mode"> 
-     <button @click="toggleCompact" id="closeCompact">X</button>
+     <button @click="toggleCompact" id="closeCompact"><i class="fa-regular fa-circle-xmark"></i></button>
     <div id="compact_window"> 
             <div @click="toggleDropdown" id="dropdown_menu">
                 <p class="dropdownCTRL" v-show="!dropdownOpen">Item Dropdown<i class="fa-solid fa-angle-down"></i></p>
@@ -106,6 +112,26 @@
                 </div>
                 <p class="dropdownCTRL" v-show="dropdownOpen">Close Dropdown<i class="fa-solid fa-angle-up"></i></p>
         </div> 
+    </div>
+</div>
+
+<!-- Cart: -->
+
+<div v-show="cart_open" @click="toggle_cart_window" id="cart_window"> 
+    <div v-show="cart_open" @click="" id="cart_sub_window">
+     <section id="cart_text">
+        <header id="cart_head">Your Shopping Cart</header>
+        <header id="cart_total_p">Total Price: ${{ cart_total }}</header>
+    </section>
+    <section id="items_section">
+    <div class="cart_display" v-for="cart_item in cart_items"> 
+        <p> {{ cart_item.cart_name }}</p>
+        <p> {{ cart_item.cart_price }}</p>
+        </div>
+    </section>
+    <section id="cart_checkout">
+        <button id="checkout_btn">Checkout</button>
+    </section>
     </div>
 </div>
 
