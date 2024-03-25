@@ -131,13 +131,23 @@ const app = Vue.createApp({
         
         submit_checkout() { 
             console.log('Checkout Submitted', this.PaymentInfo, 'Items Checked Out:',this.cart_items)
-
-        }
+            console.log('Length of card num =',this.PaymentInfo.CardNum.length)
+            console.log('Length of CVC =', this.PaymentInfo.CardCvc.length)
+            // Check if the data entered in the checkout is correct: 
+            
+            if (this.PaymentInfo.CardNum.length > 16 || this.PaymentInfo.CardNum.length < 16) {
+                alert('The Card Number is to short! Please Try again')
+                return
+        }   
+            if (this.PaymentInfo.CardCvc.length > 3 || this.PaymentInfo.CardCvc.length < 3) { 
+                alert('The CVC is to short! Please Try again')
+                return
+            }
     }, 
     mounted() { 
         this.vue_onload()
     }
-});
+}});
 
 
 
