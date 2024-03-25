@@ -103,10 +103,12 @@ const app = Vue.createApp({
 
         // Cart Functions: 
         cart_add(name, price) { 
+
             this.cart_add_item = { 
                 cart_name: name, 
                 cart_price: price
             } 
+            alert('You haved added 1x' + ' ' + this.cart_add_item.cart_name + ' ' + 'priced at' + ' ' + '$' + this.cart_add_item.cart_price + ' ' + 'to your cart')
             this.item_counter++; // Increment the item counter
 
             // Add the item to the cart items array: 
@@ -143,7 +145,7 @@ const app = Vue.createApp({
                 alert('The CVC is to short! Please Try again')
                 return
             }
-        alert('Dead End Reached.. The Application goes no further than this')
+        alert('Checking Card info...')
     }, 
     mounted() { 
         this.vue_onload()
