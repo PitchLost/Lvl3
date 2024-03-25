@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Development</title>
+    <title>Development Window</title>
     <!-- CDNS: -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="https://kit.fontawesome.com/e68c61fca7.js" crossorigin="anonymous"></script>
@@ -39,6 +39,8 @@
 
         <!-- Cart -->
             <link rel="stylesheet" href="/L3_Programming/L3_cart/css/cart.css">
+        <!-- Checkout -->
+            <link rel="stylesheet" href="/L3_Programming/L3_checkout/css/checkout.css">
 </head>
 <body>
     <div id="app">
@@ -130,8 +132,36 @@
         </div>
     </section>
     <section id="cart_checkout">
-        <button id="checkout_btn">Checkout</button>
+        <button @click="toggle_checkout" id="checkout_btn">Checkout</button>
     </section>
+    </div>
+</div>
+
+<!-- Checkout -->
+<div v-show="checkout_open" id="checkout_window"> 
+    <button @click="toggle_checkout" id="close_checkout">X</button>
+    <div v-show="checkout_open" id="checkout_sub_windw"> 
+        <section id="checkout_section1"> 
+            <header id="checkout_head" style="font-size: 6mm;">Checkout {{item_counter}} Items</header>
+            <div id="checkout_price"> 
+                <p id="check_price">You have {{item_counter}} Items in your cart, This totals to ${{cart_total}}</p>
+            </div>
+        </section>
+        <!-- Obviously this is template only -->
+        <section id="perso_info"> 
+            <form id="checkout_form"> 
+                <input type="text" id="checkout_name" placeholder="Your full name">
+                <input type="email" id="checkout_email" placeholder="Email Address"> 
+                <input type="number" id="card_number" placeholder="1234 5678 9101 2345"> 
+                <input type="number" id="cvc" placeholder="123">
+                <input type="date" id="cart_data" placeholder="03/24">
+                <button type="submit">Place Order</button>
+            </form>
+        </section>
+        <section id="checkout_text"> 
+
+        </section>
+        
     </div>
 </div>
 

@@ -40,7 +40,12 @@ const app = Vue.createApp({
             cart_add_item: { 
                 cart_name: '',
                 cart_price: 0
-            }
+            }, 
+            item_counter: 0,
+
+            // Checkout Data: 
+
+            checkout_open: false, 
         
 
         };
@@ -95,6 +100,7 @@ const app = Vue.createApp({
                 cart_name: name, 
                 cart_price: price
             } 
+            this.item_counter++; // Increment the item counter
 
             // Add the item to the cart items array: 
             this.cart_items.push(this.cart_add_item)
@@ -111,8 +117,9 @@ const app = Vue.createApp({
             console.log('Toggle cart', this.cart_open)
         },
 
-        open_checkout() { 
+        toggle_checkout() { 
             console.log('Opening Checkout')
+            this.checkout_open = !this.checkout_open
         }
     }, 
     mounted() { 
