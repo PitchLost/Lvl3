@@ -135,7 +135,7 @@ const app = Vue.createApp({
             console.log('Length of CVC =', this.PaymentInfo.CardCvc.length)
             // Check if the data entered in the checkout is correct: 
             
-            if (this.PaymentInfo.CardNum.length > 16 || this.PaymentInfo.CardNum.length < 16) {
+            if (this.PaymentInfo.CardNum.length > 19 || this.PaymentInfo.CardNum.length < 19) {
                 alert('The Card Number is to short! Please Try again')
                 return
         }   
@@ -143,6 +143,7 @@ const app = Vue.createApp({
                 alert('The CVC is to short! Please Try again')
                 return
             }
+        alert('Dead End Reached.. The Application goes no further than this')
     }, 
     mounted() { 
         this.vue_onload()
