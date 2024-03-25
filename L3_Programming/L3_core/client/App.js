@@ -40,6 +40,18 @@ const app = Vue.createApp({
             cart_add_item: { 
                 cart_name: '',
                 cart_price: 0
+            }, 
+            item_counter: 0,
+
+            // Checkout Data: 
+
+            checkout_open: false, 
+
+            PaymentInfo: { 
+                CardNum: '', 
+                CardName: '', 
+                CardCvc: '',
+                CardExpiry: ''
             }
         
 
@@ -95,6 +107,7 @@ const app = Vue.createApp({
                 cart_name: name, 
                 cart_price: price
             } 
+            this.item_counter++; // Increment the item counter
 
             // Add the item to the cart items array: 
             this.cart_items.push(this.cart_add_item)
@@ -111,14 +124,31 @@ const app = Vue.createApp({
             console.log('Toggle cart', this.cart_open)
         },
 
-        open_checkout() { 
+        toggle_checkout() { 
             console.log('Opening Checkout')
-        }
+            this.checkout_open = !this.checkout_open
+        },
+        
+        submit_checkout() { 
+            console.log('Checkout Submitted', this.PaymentInfo, 'Items Checked Out:',this.cart_items)
+            console.log('Length of card num =',this.PaymentInfo.CardNum.length)
+            console.log('Length of CVC =', this.PaymentInfo.CardCvc.length)
+            // Check if the data entered in the checkout is correct: 
+            
+            if (this.PaymentInfo.CardNum.length > 19 || this.PaymentInfo.CardNum.length < 19) {
+                alert('The Card Number is to short! Please Try again')
+                return
+        }   
+            if (this.PaymentInfo.CardCvc.length > 3 || this.PaymentInfo.CardCvc.length < 3) { 
+                alert('The CVC is to short! Please Try again')
+                return
+            }
+        alert('Dead End Reached.. The Application goes no further than this')
     }, 
     mounted() { 
         this.vue_onload()
     }
-});
+}});
 
 
 
