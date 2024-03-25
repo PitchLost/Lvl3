@@ -46,6 +46,13 @@ const app = Vue.createApp({
             // Checkout Data: 
 
             checkout_open: false, 
+
+            PaymentInfo: { 
+                CardNum: '', 
+                CardName: '', 
+                CardCvc: '',
+                CardExpiry: ''
+            }
         
 
         };
@@ -120,6 +127,11 @@ const app = Vue.createApp({
         toggle_checkout() { 
             console.log('Opening Checkout')
             this.checkout_open = !this.checkout_open
+        },
+        
+        submit_checkout() { 
+            console.log('Checkout Submitted', this.PaymentInfo, 'Items Checked Out:',this.cart_items)
+
         }
     }, 
     mounted() { 

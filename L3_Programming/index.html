@@ -149,12 +149,12 @@
         </section>
         <!-- Obviously this is template only -->
         <section id="perso_info"> 
-            <form id="checkout_form"> 
-                <input type="text" id="checkout_name" placeholder="Your full name">
+            <form @submit.prevent="submit_checkout" id="checkout_form"> 
+                <input v-model="PaymentInfo.CardName" type="text" id="checkout_name" placeholder="Your full name">
                 <input type="email" id="checkout_email" placeholder="Email Address"> 
-                <input type="number" id="card_number" placeholder="1234 5678 9101 2345"> 
-                <input type="number" id="cvc" placeholder="123">
-                <input type="date" id="cart_data" placeholder="03/24">
+                <input v-model="PaymentInfo.CardNum" type="text" id="card_number" placeholder="1234 5678 9101 2345"> 
+                <input v-model="PaymentInfo.CardCvc" type="text" id="cvc" placeholder="123">
+                <input v-model="PaymentInfo.CardExpiry" type="date" id="cart_data" placeholder="03/24">
                 <button type="submit">Place Order</button>
             </form>
         </section>
