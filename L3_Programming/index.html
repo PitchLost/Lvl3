@@ -58,9 +58,7 @@
     <nav> 
         <ul id="top_nav"> 
             <div id="left_seg"> 
-                <li @click="toggleCompact"><a>Compact order page</a></li>
-                <li><a href="link.com">Home Page</a></li>
-                <li><a href="link.com">Buyers Gurantee</a></li>
+                <li @click="toggleCompact"><a><i class="fa-solid fa-square-caret-down"></i></a></li>
                 <button @click="toggle_cart_window"><i class="fa-solid fa-cart-shopping"></i></button>
             </div>
             <div id="center_seg"> 
@@ -110,7 +108,7 @@
             <div @click="toggleDropdown" id="dropdown_menu">
                 <p class="dropdownCTRL" v-show="!dropdownOpen">Item Dropdown<i class="fa-solid fa-angle-down"></i></p>
                 <div v-if="dropdownOpen" id="dropdownItems">
-                <p v-for="dropdownItem in dropdownItems">{{ dropdownItem.ITEM_NAME }} </p>
+                <p v-for="dropdownItem in dropdownItems" @click="cart_add(dropdownItem.ITEM_NAME, dropdownItem.ITEM_PRICE)">{{ dropdownItem.ITEM_NAME }} </p>
                 </div>
                 <p class="dropdownCTRL" v-show="dropdownOpen">Close Dropdown<i class="fa-solid fa-angle-up"></i></p>
         </div> 
@@ -129,6 +127,7 @@
     <div class="cart_display" v-for="cart_item in cart_items"> 
         <p> {{ cart_item.cart_name }}</p>
         <p> {{ cart_item.cart_price }}</p>
+        <input v-model="cart_item.cart_qty" placeholder="1">
         </div>
     </section>
     <section id="cart_checkout">

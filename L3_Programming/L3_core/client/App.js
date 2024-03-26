@@ -39,7 +39,8 @@ const app = Vue.createApp({
             // Item being added to the cart
             cart_add_item: { 
                 cart_name: '',
-                cart_price: 0
+                cart_price: 0,
+                cart_qty: 1
             }, 
             item_counter: 0,
 
@@ -85,9 +86,13 @@ const app = Vue.createApp({
 
         //Compact Mode Functions: 
         toggleCompact() { 
+            let time = new Date()
+            console.log('Compact mode opened', time)
             this.compactOpen = !this.compactOpen
         },
         toggleDropdown() { 
+            let time = new Date()
+            console.log('Dropdown opened',time)
             this.dropdownOpen = !this.dropdownOpen
         },
 
@@ -103,10 +108,12 @@ const app = Vue.createApp({
 
         // Cart Functions: 
         cart_add(name, price) { 
+
             this.cart_add_item = { 
                 cart_name: name, 
                 cart_price: price
             } 
+            alert('You haved added 1x' + ' ' + this.cart_add_item.cart_name + ' ' + 'priced at' + ' ' + '$' + this.cart_add_item.cart_price + ' ' + 'to your cart')
             this.item_counter++; // Increment the item counter
 
             // Add the item to the cart items array: 
@@ -120,17 +127,20 @@ const app = Vue.createApp({
             
         }, 
         toggle_cart_window() { 
+            let time = new Date()
             this.cart_open = !this.cart_open
-            console.log('Toggle cart', this.cart_open)
+            console.log('Toggle cart', this.cart_open, time)
         },
 
         toggle_checkout() { 
-            console.log('Opening Checkout')
+            let time = new Date()
+            console.log('Opening Checkout', time)
             this.checkout_open = !this.checkout_open
         },
         
         submit_checkout() { 
-            console.log('Checkout Submitted', this.PaymentInfo, 'Items Checked Out:',this.cart_items)
+            let time = new Date()
+            console.log('Checkout Submitted', this.PaymentInfo, 'Items Checked Out:',this.cart_items, time )
             console.log('Length of card num =',this.PaymentInfo.CardNum.length)
             console.log('Length of CVC =', this.PaymentInfo.CardCvc.length)
             // Check if the data entered in the checkout is correct: 
@@ -143,7 +153,7 @@ const app = Vue.createApp({
                 alert('The CVC is to short! Please Try again')
                 return
             }
-        alert('Dead End Reached.. The Application goes no further than this')
+        alert('Checking Card info...')
     }, 
     mounted() { 
         this.vue_onload()

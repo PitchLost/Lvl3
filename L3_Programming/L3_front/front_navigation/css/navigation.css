@@ -19,7 +19,7 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    z-index: 999;
+
 }
 #left_seg, #right_seg, #center_seg { 
     width: 33vw;
@@ -45,6 +45,10 @@
     background-color: transparent;
     border-style: none;
     font-size:5mm;
+}
+#left_seg button, a {
+    font-size: 7mm;
+    background-color: white;
 }
 a {
  
