@@ -19,7 +19,7 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    z-index: 997;
+
 }
 #left_seg, #right_seg, #center_seg { 
     width: 33vw;
