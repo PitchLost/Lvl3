@@ -39,8 +39,8 @@ const app = Vue.createApp({
             // Item being added to the cart
             cart_add_item: { 
                 cart_name: '',
-                cart_price: 0,
-                cart_qty: 1
+                cart_qty: 1,
+                cart_price: 0
             }, 
             item_counter: 0,
 
@@ -53,7 +53,8 @@ const app = Vue.createApp({
                 CardName: '', 
                 CardCvc: '',
                 CardExpiry: ''
-            }
+            }, 
+            runLoop: false
         
 
         };
@@ -64,7 +65,10 @@ const app = Vue.createApp({
         vue_onload() { 
             console.log('vue onload function')
             this.dropdownItems = this.dropdownItems.sort((a,b) => a.ITEM_NAME.localeCompare(b.ITEM_NAME))
+            runLoop = true
         },
+
+       
         add_new(name, price, img_src) { // add new items to database/DOM
             console.log(name, price, img_src) // Log
             new_item = { // Set the values of new_item to the newly obtained data
@@ -111,7 +115,7 @@ const app = Vue.createApp({
 
             this.cart_add_item = { 
                 cart_name: name, 
-                cart_price: price
+                cart_price: price * this.cart_add_item.cart_qty
             } 
             alert('You haved added 1x' + ' ' + this.cart_add_item.cart_name + ' ' + 'priced at' + ' ' + '$' + this.cart_add_item.cart_price + ' ' + 'to your cart')
             this.item_counter++; // Increment the item counter
@@ -126,6 +130,18 @@ const app = Vue.createApp({
             console.log('The cart running total is:',this.cart_total)
             
         }, 
+        removeFromCart() { 
+            this.cart_items.splice(this.cart_add_item)
+            console.log('Removed the following item from cart:', this.cart_add_item)
+        },
+        updateQty() { 
+            console.log('Update cart qty')
+            this.cart_add_item.cart_price = this.cart_add_item.cart_price * this.cart_add_item.cart_qty
+            if (this.cart_add_item.cart_qty == 0 ) { 
+                this.removeFromCart(this.cart_add_item)
+            }
+            console.log('The updated price = ', this.cart_add_item.cart_price)
+        },
         toggle_cart_window() { 
             let time = new Date()
             this.cart_open = !this.cart_open
