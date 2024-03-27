@@ -37,7 +37,7 @@ const app = Vue.createApp({
             cart_items: [],
 
             // Item being added to the cart
-            cart_add_item: { 
+            CartClass: { 
                 cart_name: '',
                 cart_qty: 1,
                 cart_price: 0
@@ -113,34 +113,38 @@ const app = Vue.createApp({
         // Cart Functions: 
         cart_add(name, price) { 
 
-            this.cart_add_item = { 
+            //TODO: Update the logic on the following code:
+            
+            this.CartClass = { 
                 cart_name: name, 
-                cart_price: price * this.cart_add_item.cart_qty
+                cart_qty: 1,
+                cart_price: price * this.CartClass.cart_qty, 
+                cart_new_price: 0
             } 
-            alert('You haved added 1x' + ' ' + this.cart_add_item.cart_name + ' ' + 'priced at' + ' ' + '$' + this.cart_add_item.cart_price + ' ' + 'to your cart')
+            alert('You haved added 1x' + ' ' + this.CartClass.cart_name + ' ' + 'priced at' + ' ' + '$' + this.CartClass.cart_price + ' ' + 'to your cart')
             this.item_counter++; // Increment the item counter
 
             // Add the item to the cart items array: 
-            this.cart_items.push(this.cart_add_item)
-            console.log('Item added to cart:',this.cart_add_item)
-            console.log('Cart Contents:', this.cart_items)
+            this.cart_items.push(this.CartClass) // Push the new item into the main cart array
+            console.log('Item added to cart:',this.CartClass) //* Log 
+            console.log('Cart Contents:', this.cart_items) //* Log
 
             // Increment the cart Price: 
-            this.cart_total = this.cart_total + this.cart_add_item.cart_price
-            console.log('The cart running total is:',this.cart_total)
+            this.cart_total = this.cart_total + this.CartClass.cart_price // Calculate a grand total 
+            console.log('The cart running total is:',this.cart_total) //* Log
             
         }, 
         removeFromCart() { 
-            this.cart_items.splice(this.cart_add_item)
-            console.log('Removed the following item from cart:', this.cart_add_item)
+            this.cart_items.splice(this.CartClass) // Remove the target item from the main cart array. Doing this will remove it automatically thanks to vue
+            console.log('Removed the following item from cart:', this.CartClass) //* Log
         },
         updateQty() { 
-            console.log('Update cart qty')
-            this.cart_add_item.cart_price = this.cart_add_item.cart_price * this.cart_add_item.cart_qty
-            if (this.cart_add_item.cart_qty == 0 ) { 
-                this.removeFromCart(this.cart_add_item)
+            console.log('Update cart qty') //* Log
+            this.CartClass.cart_new_price = this.CartClass.cart_price * this.CartClass.cart_qty // Multiply the item price with the qty
+            if (this.CartClass.cart_qty == 0 ) { // Check if the item qty is 0 If so then remove from cart
+                this.removeFromCart(this.CartClass) // Call the remove from cart function passing the element we want to remove with the function
             }
-            console.log('The updated price = ', this.cart_add_item.cart_price)
+            console.log('The updated price = ', this.CartClass.cart_price, this.CartClass.cart_new_price, this.CartClass.cart_qty) //* Log
         },
         toggle_cart_window() { 
             let time = new Date()

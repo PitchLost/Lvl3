@@ -127,7 +127,7 @@
     <div class="cart_display" v-for="cart_item in cart_items"> 
         <p> {{ cart_item.cart_name }}</p>
         <p> {{ cart_item.cart_price }}</p>
-        <input value="1" type="number" v-model="cart_add_item.cart_qty" placeholder="1" @input="updateQty">
+        <input value="1" type="number" v-model="cart_item.cart_qty" placeholder="1" @input="updateQty">
         </div>
     </section>
     <section id="cart_checkout">
