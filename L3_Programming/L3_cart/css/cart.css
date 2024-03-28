@@ -63,6 +63,17 @@
     scrollbar-width: none;
 }
 
+/* TODO: Change all this to be more flexy/dynamic. The position:fixed makes it so different screen widths/heights are buggered */
+.cart_display input { 
+    width: 4vw;
+    height: 4vh;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+    position: fixed;
+    left: 57vw;
+}
+
 #checkout_btn { 
     position: fixed;
     bottom: 20vh;

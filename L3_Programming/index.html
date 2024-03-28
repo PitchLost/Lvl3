@@ -117,7 +117,7 @@
 
 <!-- Cart: -->
 
-<div v-show="cart_open" @click="toggle_cart_window" id="cart_window"> 
+<div v-show="cart_open" id="cart_window"> 
     <div v-show="cart_open" @click="" id="cart_sub_window">
      <section id="cart_text">
         <header id="cart_head">Your Shopping Cart</header>
@@ -126,8 +126,8 @@
     <section id="items_section">
     <div class="cart_display" v-for="cart_item in cart_items"> 
         <p> {{ cart_item.cart_name }}</p>
-        <p> {{ cart_item.cart_price }}</p>
-        <input v-model="cart_item.cart_qty" placeholder="1">
+        <p> {{ cart_item.cart_new_price }}</p>
+        <input value="1" type="number" v-model="cart_item.cart_qty" placeholder="1" @input="updateQty(cart_item)">
         </div>
     </section>
     <section id="cart_checkout">
@@ -153,7 +153,7 @@
                 <input type="email" id="checkout_email" placeholder="Email Address"> 
                 <input v-model="PaymentInfo.CardNum" type="text" id="card_number" placeholder="1234 5678 9101 2345"> 
                 <input v-model="PaymentInfo.CardCvc" type="text" id="cvc" placeholder="123">
-                <input v-model="PaymentInfo.CardExpiry" type="date" id="cart_data" placeholder="03/24">
+                <input v-model="PaymentInfo.CardExpiry"  type="date" id="cart_data" placeholder="03/24">
                 <button type="submit">Place Order</button>
             </form>
         </section>

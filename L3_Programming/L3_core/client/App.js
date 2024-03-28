@@ -37,10 +37,10 @@ const app = Vue.createApp({
             cart_items: [],
 
             // Item being added to the cart
-            cart_add_item: { 
+            CartClass: { 
                 cart_name: '',
-                cart_price: 0,
-                cart_qty: 1
+                cart_qty: 1,
+                cart_price: 0
             }, 
             item_counter: 0,
 
@@ -53,7 +53,8 @@ const app = Vue.createApp({
                 CardName: '', 
                 CardCvc: '',
                 CardExpiry: ''
-            }
+            }, 
+            runLoop: false
         
 
         };
@@ -64,7 +65,10 @@ const app = Vue.createApp({
         vue_onload() { 
             console.log('vue onload function')
             this.dropdownItems = this.dropdownItems.sort((a,b) => a.ITEM_NAME.localeCompare(b.ITEM_NAME))
+            runLoop = true
         },
+
+       
         add_new(name, price, img_src) { // add new items to database/DOM
             console.log(name, price, img_src) // Log
             new_item = { // Set the values of new_item to the newly obtained data
@@ -109,23 +113,49 @@ const app = Vue.createApp({
         // Cart Functions: 
         cart_add(name, price) { 
 
-            this.cart_add_item = { 
+            //TODO: Update the logic on the following code:
+            
+            this.CartClass = { 
                 cart_name: name, 
-                cart_price: price
+                cart_qty: 1,
+                cart_price: price * this.CartClass.cart_qty, 
+                cart_new_price: 0
             } 
-            alert('You haved added 1x' + ' ' + this.cart_add_item.cart_name + ' ' + 'priced at' + ' ' + '$' + this.cart_add_item.cart_price + ' ' + 'to your cart')
+            alert('You haved added 1x' + ' ' + this.CartClass.cart_name + ' ' + 'priced at' + ' ' + '$' + this.CartClass.cart_price + ' ' + 'to your cart')
             this.item_counter++; // Increment the item counter
 
             // Add the item to the cart items array: 
-            this.cart_items.push(this.cart_add_item)
-            console.log('Item added to cart:',this.cart_add_item)
-            console.log('Cart Contents:', this.cart_items)
+            this.cart_items.push(this.CartClass) // Push the new item into the main cart array
+      
 
             // Increment the cart Price: 
-            this.cart_total = this.cart_total + this.cart_add_item.cart_price
-            console.log('The cart running total is:',this.cart_total)
+            this.cart_total = this.cart_total + this.CartClass.cart_price // Calculate a grand total 
+            
             
         }, 
+        removeFromCart(cart_item) { 
+            let index = this.cart_items.indexOf(cart_item);
+            console.log('cart_items index', index);
+            console.log('Before splice:', this.cart_items);
+            this.cart_items.splice(index, 1); // Remove 1 item starting from index
+            console.log('Removed the following item from cart:', cart_item); //* Log
+            console.log('After splice', this.cart_items);
+        },
+        
+
+        updateQty(cart_item) { 
+            
+            console.log('Update cart qty') //* Log
+            console.log('update param =',cart_item)
+            cart_item.cart_new_price = cart_item.cart_price * cart_item.cart_qty // Multiply the item price with the qty
+            if (cart_item.cart_qty == 0 ) { // Check if the item qty is 0 If so then remove from cart
+                console.log('Before func:',this.cart_items)
+                this.removeFromCart(cart_item) // Call the remove from cart function passing the element we want to remove with the function
+                console.log('Passing',cart_item, 'To the remove array')
+                
+            }
+            console.log('The updated price = ', this.CartClass.cart_price, this.CartClass.cart_new_price, this.CartClass.cart_qty) //* Log
+        },
         toggle_cart_window() { 
             let time = new Date()
             this.cart_open = !this.cart_open
