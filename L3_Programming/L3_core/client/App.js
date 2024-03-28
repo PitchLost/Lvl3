@@ -126,23 +126,33 @@ const app = Vue.createApp({
 
             // Add the item to the cart items array: 
             this.cart_items.push(this.CartClass) // Push the new item into the main cart array
-            console.log('Item added to cart:',this.CartClass) //* Log 
-            console.log('Cart Contents:', this.cart_items) //* Log
+      
 
             // Increment the cart Price: 
             this.cart_total = this.cart_total + this.CartClass.cart_price // Calculate a grand total 
-            console.log('The cart running total is:',this.cart_total) //* Log
+            
             
         }, 
-        removeFromCart() { 
-            this.cart_items.splice(this.CartClass) // Remove the target item from the main cart array. Doing this will remove it automatically thanks to vue
-            console.log('Removed the following item from cart:', this.CartClass) //* Log
+        removeFromCart(cart_item) { 
+            let index = this.cart_items.indexOf(cart_item);
+            console.log('cart_items index', index);
+            console.log('Before splice:', this.cart_items);
+            this.cart_items.splice(index, 1); // Remove 1 item starting from index
+            console.log('Removed the following item from cart:', cart_item); //* Log
+            console.log('After splice', this.cart_items);
         },
-        updateQty() { 
+        
+
+        updateQty(cart_item) { 
+            
             console.log('Update cart qty') //* Log
-            this.CartClass.cart_new_price = this.CartClass.cart_price * this.CartClass.cart_qty // Multiply the item price with the qty
-            if (this.CartClass.cart_qty == 0 ) { // Check if the item qty is 0 If so then remove from cart
-                this.removeFromCart(this.CartClass) // Call the remove from cart function passing the element we want to remove with the function
+            console.log('update param =',cart_item)
+            cart_item.cart_new_price = cart_item.cart_price * cart_item.cart_qty // Multiply the item price with the qty
+            if (cart_item.cart_qty == 0 ) { // Check if the item qty is 0 If so then remove from cart
+                console.log('Before func:',this.cart_items)
+                this.removeFromCart(cart_item) // Call the remove from cart function passing the element we want to remove with the function
+                console.log('Passing',cart_item, 'To the remove array')
+                
             }
             console.log('The updated price = ', this.CartClass.cart_price, this.CartClass.cart_new_price, this.CartClass.cart_qty) //* Log
         },
