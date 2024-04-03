@@ -98,7 +98,7 @@ const app = Vue.createApp({
         // Toggle the developer mode
         toggleDevMode() { 
             this.developer_mode = !this.developer_mode // Toggle
-            console.log('Dev Mode:', developer_mode) // Log
+            console.log('Dev Mode:', this.developer_mode) // Log
         }, 
 
         
