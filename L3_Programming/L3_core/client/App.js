@@ -157,7 +157,7 @@ const app = Vue.createApp({
             if (cart_item.cart_qty == 0 ) { // Check if the item qty is 0 If so then remove from cart
                 this.removeFromCart(cart_item) // Call the remove from cart function passing the element we want to remove with the function
                 console.log('Passing',cart_item, 'To the remove array')
-                return
+                return 
             }
             this.cart_total = this.cart_items.reduce((total, item) => total + item.cart_new_price, 0);
             console.log('The updated price = ', this.CartClass.cart_price, this.CartClass.cart_new_price, this.CartClass.cart_qty) //* Log
