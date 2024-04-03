@@ -4,9 +4,15 @@ let users_storage; //TODO: Add the logic for this
 let users_account; // TODO: Check browser storage or database for user account
 let session_length = 0
 
+const loadingScreen = document.getElementById('LoadingScreen')
+
 
 document.addEventListener('DOMContentLoaded', _ => { 
 console.log('core.js executing')
+
+setTimeout(_ => { 
+loadingScreen.style.display = 'none'
+},300)
 
 const time_of_load = new Date() 
 console.log('Session start time =',time_of_load)
@@ -21,3 +27,4 @@ console.log('Session start time =',time_of_load)
 
 // })
 })
+

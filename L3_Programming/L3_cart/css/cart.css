@@ -113,3 +113,14 @@
     justify-content: center;
     align-items: center;
 }
+
+#close_cart { 
+    position: fixed;
+    right: 10vw;
+    top: 10vh;
+    background-color: transparent;
+}
+#close_cart:hover { 
+    background-color: red;
+    color: white;
+}

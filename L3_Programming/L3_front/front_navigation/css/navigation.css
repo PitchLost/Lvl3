@@ -39,13 +39,20 @@
 #center_seg header { 
     font-weight: bold;
     font-size: 7mm;
+    font-family: "Reddit Mono", monospace; /* Sourced from google fonts! */
 }
 
-#right_seg button { 
+#right_seg button, i { 
     background-color: transparent;
     border-style: none;
     font-size:5mm;
+    color: black;
 }
+
+#right_seg, #left_seg button:hover, i:hover { 
+    color: blue;
+}
+
 #left_seg button, a {
     font-size: 7mm;
     background-color: white;

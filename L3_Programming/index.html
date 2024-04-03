@@ -43,6 +43,11 @@
             <link rel="stylesheet" href="/L3_Programming/L3_checkout/css/checkout.css">
 </head>
 <body>
+
+<div id="LoadingScreen"> 
+    <p>The page is loading...</p>
+</div>
+
     <div id="app">
     <div v-show="developer_mode" id="add_new"> 
         <form @submit.prevent="add_new(new_item.new_name, new_item.new_price, new_item.new_img)" id="add_new_form"> 
@@ -119,6 +124,7 @@
 
 <div v-show="cart_open" id="cart_window"> 
     <div v-show="cart_open" @click="" id="cart_sub_window">
+        <button id="close_cart" @click="toggle_cart_window"><i class="fa-regular fa-circle-xmark"></i> </button>
      <section id="cart_text">
         <header id="cart_head">Your Shopping Cart</header>
         <header id="cart_total_p">Total Price: ${{ cart_total }}</header>

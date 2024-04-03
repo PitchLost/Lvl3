@@ -98,7 +98,7 @@ const app = Vue.createApp({
         // Toggle the developer mode
         toggleDevMode() { 
             this.developer_mode = !this.developer_mode // Toggle
-            console.log('Dev Mode:', developer_mode) // Log
+            console.log('Dev Mode:', this.developer_mode) // Log
         }, 
 
         
@@ -126,9 +126,10 @@ const app = Vue.createApp({
                 cart_name: name, // Name
                 cart_qty: 1, // qty of item
                 cart_price: price * this.CartClass.cart_qty, // Doing this supports having qty of item
-                cart_new_price: 0 // reset the price otherwise it will wig out if we try to increase the qty in the future
+                cart_new_price: price * this.CartClass.cart_qty // reset the price otherwise it will wig out if we try to increase the qty in the future
             } 
             // Alert the user about their item. In a larger project we would make our own message box instead of this
+            console.log(this.CartClass.cart_price)
             alert('You haved added 1x' + ' ' + this.CartClass.cart_name + ' ' + 'priced at' + ' ' + '$' + this.CartClass.cart_price + ' ' + 'to your cart')
             this.item_counter++; // Increment the item counter 
 
@@ -137,24 +138,28 @@ const app = Vue.createApp({
       
 
             // Increment the cart Price: 
-            this.cart_total = this.cart_total + this.CartClass.cart_price // Calculate a grand total 
+            this.cart_total += price
             
             
         }, 
         removeFromCart(cart_item) { 
             let index = this.cart_items.indexOf(cart_item); // this index points to the item we want to remove
             this.cart_items.splice(index, 1); // Remove 1 item starting from index
+            this.cart_total -= cart_item.cart_price; // Subtract removed item's price from total
             console.log('Removed the following item from cart:', cart_item); //* Log
         },
         
 
         updateQty(cart_item) { 
+            console.log('Cart price =',cart_item.cart_price)
             cart_item.cart_new_price = cart_item.cart_price * cart_item.cart_qty // Multiply the item price with the qty
+
             if (cart_item.cart_qty == 0 ) { // Check if the item qty is 0 If so then remove from cart
                 this.removeFromCart(cart_item) // Call the remove from cart function passing the element we want to remove with the function
                 console.log('Passing',cart_item, 'To the remove array')
-                
+                return 
             }
+            this.cart_total = this.cart_items.reduce((total, item) => total + item.cart_new_price, 0);
             console.log('The updated price = ', this.CartClass.cart_price, this.CartClass.cart_new_price, this.CartClass.cart_qty) //* Log
         },
         // Toggle visibillity of the cart window

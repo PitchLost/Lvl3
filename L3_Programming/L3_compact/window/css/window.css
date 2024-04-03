@@ -29,6 +29,7 @@
     position: fixed;
     right: 10vw;
     top: 10vh;
+    background-color: transparent;
 } #closeCompact:hover { 
     background-color: red;
     color: white;
